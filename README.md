@@ -2,11 +2,11 @@
 
 A comprehensive solution for implementing multi-language support in Django REST APIs with automatic content translation.
 
-## 🚀 Overview
+## Overview
 
 This project solves a common but poorly-documented challenge in Django development: automatically translating content across multiple languages in REST APIs. Unlike other solutions that require manual translation management, this implementation automatically handles translations when content is created and serves the appropriate language based on client headers.
 
-## 🎯 Key Features
+## Key Features
 
 - **Automatic Translation**: Content is automatically translated to all supported languages when created
 - **Header-Based Language Detection**: Uses standard `Accept-Language` HTTP headers
@@ -14,20 +14,20 @@ This project solves a common but poorly-documented challenge in Django developme
 - **Simple Integration**: Easy to add to existing Django projects
 - **Production Ready**: Includes error handling, caching, and fallback strategies
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Django** & **Django REST Framework**
 - **django-modeltranslation** for field translation
 - **googletrans** for automatic translation
 - Custom middleware for language detection
 
-## 📋 Prerequisites
+## Prerequisites
 
 ```bash
 pip install django-modeltranslation googletrans==3.1.0a0 djangorestframework
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 .
@@ -58,7 +58,7 @@ pip install django-modeltranslation googletrans==3.1.0a0 djangorestframework
 └── requirements.txt
 ```
 
-## 🔧 Implementation Guide
+## Implementation Guide
 
 ### 1. Model Configuration
 
@@ -225,7 +225,7 @@ def auto_translate_category(sender, instance, created, **kwargs):
         auto_translate_instance(instance, ['name', 'description'])
 ```
 
-## 🚀 Usage Examples
+## Usage Examples
 
 ### Creating Content
 
@@ -253,14 +253,14 @@ curl -X GET http://localhost:8000/api/products/1/ \
   -H "Accept-Language: fr"
 ```
 
-## 🎯 How It Works
+## How It Works
 
 1. **Content Creation**: When you create content with base fields (`name`, `description`), it's saved as the default language
 2. **Auto-Translation**: Post-save signals trigger automatic translation to all supported languages
 3. **Language Detection**: Middleware reads `Accept-Language` headers to determine client preference
 4. **Smart Response**: API returns content in the requested language automatically
 
-## ⚠️ Common Issues & Solutions
+## Common Issues & Solutions
 
 ### Issue: Translations not working
 **Solution**: Ensure `modeltranslation` is before `django.contrib.admin` in `INSTALLED_APPS`
@@ -271,7 +271,7 @@ curl -X GET http://localhost:8000/api/products/1/ \
 ### Issue: Auto-translation fails
 **Solution**: Add error handling and fallbacks in translation service
 
-## 🔄 Extending the Solution
+## Extending the Solution
 
 ### Adding New Languages
 1. Add to `LANGUAGES` in settings
@@ -281,7 +281,7 @@ curl -X GET http://localhost:8000/api/products/1/ \
 ### Custom Translation Services
 Replace `googletrans` with paid services (Google Cloud Translate, DeepL, Azure Translator) for better accuracy and reliability.
 
-## 📝 API Endpoints
+## API Endpoints
 
 - `GET /api/products/` - List products (respects Accept-Language)
 - `POST /api/products/` - Create product (auto-translates)
@@ -289,7 +289,7 @@ Replace `googletrans` with paid services (Google Cloud Translate, DeepL, Azure T
 - `GET /api/categories/` - List categories
 - `POST /api/categories/` - Create category
 
-## 🏆 Production Considerations
+## Production Considerations
 
 - **Caching**: Implement caching for translations
 - **Error Handling**: Add robust error handling for translation failures
