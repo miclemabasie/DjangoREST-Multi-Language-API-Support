@@ -297,11 +297,11 @@ Replace `googletrans` with paid services (Google Cloud Translate, DeepL, Azure T
 - **Rate Limiting**: Implement limits for translation API calls
 - **Manual Overrides**: Allow manual translation overrides in admin
 
-## 🤝 Contributing
+## Contributing
 
 This solution addresses a common gap in Django documentation. Feel free to contribute improvements, additional language support, or better translation services.
 
-## 📄 License
+## License
 
 MIT License - feel free to use in your projects!
 
